@@ -1,15 +1,24 @@
 package dev.java10x.cadastrodeninjas.Ninja;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninja")
+@NoArgsConstructor
 public class NinjaController {
 
-    @GetMapping("/boasvindas")
-    public String boasVindas() {
-        return ("Seja bem vindo a nossa aplicação");
+    private NinjaRepository repository;
+
+    @PostMapping("/cadastro")
+    public NinjaModel cadastrarNinja(@RequestBody NinjaModel ninja){
+        return repository.save(ninja);
+    }
+
+    @GetMapping("/lista")
+       public List<NinjaModel> ListarNinjas() {
+        return repository.findAll();
     }
 }
