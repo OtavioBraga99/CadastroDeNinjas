@@ -1,33 +1,37 @@
 package dev.java10x.cadastrodeninjas.Missoes;
 
+import dev.java10x.cadastrodeninjas.Ninja.NinjaModel;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_missoes")
-public class MissaoEntity {
+public class MissaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String nome;
 
     private String dificuldade;
 
-    public MissaoEntity() {
+    @ManyToOne
+    private NinjaModel ninja;
+
+    public MissaoModel() {
     }
 
-    public MissaoEntity(int id, String nome, String dificuldade) {
+    public MissaoModel(long id, String nome, String dificuldade) {
         this.id = id;
         this.nome = nome;
         this.dificuldade = dificuldade;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 
 // TRANFORMA A CLASSE EM UMA ENTIDADE NO BANCO DE DADOS
 @Entity
-@Table (name = "db_cadastro")
+@Table(name = "db_cadastro")
 public class NinjaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private int idade;
     private String email;
+    private int idade;
 
     public NinjaModel() {
     }
